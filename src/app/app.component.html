@@ -1,0 +1,26 @@
+
+<main class="main">
+  <div class="content">
+    <div class="left-side">
+      <h1>Hello, {{ title }}</h1>
+
+      <div class="tag-container">
+        <div class="tag" *ngFor="let tag of tags; let i = index" [innerHtml]="tag">
+        </div>
+        <input
+          [(ngModel)]="inputText"
+          (keydown)="onTagInput($event)"
+          placeholder="Type '@' for suggestions"
+        />
+      </div>
+      
+      <div class="suggestions" *ngIf="showSuggestions && suggestions.length > 0">
+        <div *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)">
+          {{ suggestion }}
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</main>
