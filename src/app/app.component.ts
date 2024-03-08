@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,6 +8,7 @@ import { FormControl } from '@angular/forms';
 export class AppComponent {
   title = 'limble test';
   inputText = '';
+  tagControl = new FormControl();
   tags: string[] = [];
   showSuggestions = false;
   originalSuggestions: string[] = ['John', 'Jane', 'Doe', 'Alice', 'Bob'];
@@ -45,6 +45,9 @@ export class AppComponent {
         const lastWord = (splitText[splitText.length - 1]).replace('@', '');
         this.suggestions = this.originalSuggestions.filter(w => w.toLowerCase().includes(lastWord.toLocaleLowerCase()));
       }
+    }
+    else{
+      this.showSuggestions = false;
     }
   }
 
